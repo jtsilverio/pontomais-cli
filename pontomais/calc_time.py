@@ -45,6 +45,7 @@ def time_cards():
 def _calculate_fallback(cards):
     t0 = convert(cards[0])
     ttl = lambda total: mins_to_str(t0 + max(60*total + 60*LUNCH_TIME, 0))
+    print(" 6h shift -> Clock out at {}".format(ttl(6)))
     print(" 8h shift -> Clock out at {}".format(ttl(8)))
     print("10h shift -> Clock out at {}".format(ttl(10)))
 
@@ -59,6 +60,7 @@ def _calculate_3_cards(cards):
 
     # Show
     ttl = lambda total: mins_to_str(now + max(total*60 - p1 - p2, 0))
+    print(" 6h shift -> Clock out at {}".format(ttl(6)))
     print(" 8h shift -> Clock out at {}".format(ttl(8)))
     print("10h shift -> Clock out at {}".format(ttl(10)))
 
@@ -81,6 +83,7 @@ def _calculate_odd_cards(cards):
 
     # Show
     ttl = lambda total: mins_to_str(now + max(total*60 - sum_of_worked_mins, 0))
+    print(" 6h shift -> Clock out at {}".format(ttl(6)))
     print(" 8h shift -> Clock out at {}".format(ttl(8)))
     print("10h shift -> Clock out at {}".format(ttl(10)))
 
@@ -91,6 +94,7 @@ def _calculate_even_cards(cards):
     
     # Show
     mwt = lambda total: mins_to_str(max(total*60 - sum_of_worked_mins, 0))
+    print(" 6h shift -> Missing {} of work".format(mwt(6)))
     print(" 8h shift -> Missing {} of work".format(mwt(8)))
     print("10h shift -> Missing {} of work".format(mwt(10)))
 
